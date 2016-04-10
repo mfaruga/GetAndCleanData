@@ -84,4 +84,6 @@ run_analysis <- function() {
   # for debug purposes, write resultant table as output2.txt
   write.table(x = summarized, file = "./output2.txt", row.names = FALSE)
   
+  # return summarized from function 
+  summarized
 }
