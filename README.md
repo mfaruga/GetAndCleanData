@@ -16,7 +16,28 @@ Script provides following outputs
 3. Function itself returns result of analysis up to of step 5 described below
 
 # Data transformations
+Step 1: 
+Test and Training measurements data sets were merged (i.e. rows of test were added to train data set)
+Names of columns were set based on features.txt file
 
+Step 2:
+As there were duplicated column names, these were removed
+From resulting columns, only columns that has mean() or std() as part of the name were slected
+
+Step 3:
+Activity data set(s) (contained in y_train.txt, y_test.txt) were loaded and merged in the same order as this was done for measurements data set in step 1
+Resulting table was merged with activity labels (V2 column from activity_labels.txt) to have descriptive names of activities instead of just activity ids. 
+Note: standard merge function was not used as it does not preserve order of rows!
+
+Step 4:
+As a next step, resulting activities were merged with table created in step 2 to create single table with descriptive activity name and measurements.
+Note: resultant table is written to output1.txt file
+
+Step 5:
+Subject dat set(s) (contained in subject_train.txt and subject_text.txt) were loaded and merged in the same order as this was done for measuremens data set in step 1
+Resulting activities were merged with table created in step 4 to create single table with subject ids, descriptive activity name and measurements.
+This table was groupped by Subject and Activity and then summarized through all measurements columns with mean function to have measurements per subject/activity.
+Note: resultant table is written to output2.txt file
 
 # Definition of variables
 Columns in data set (output2.txt)
